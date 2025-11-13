@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://diuib2co6pl04"]
+
+[ext_resource type="Texture2D" uid="uid://vx8i0t6xjmce" path="res://stand.png" id="1_1cqna"]
+[ext_resource type="Script" uid="uid://cp6gaaq30yr0u" path="res://scientist_npc.gd" id="1_b1sj8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1sj8"]
+size = Vector2(132, 86)
+
+[node name="Scientist NPC" type="Node2D"]
+script = ExtResource("1_b1sj8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, -4)
+shape = SubResource("RectangleShape2D_b1sj8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_1cqna")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -222.0
+offset_top = -93.0
+offset_right = 191.0
+offset_bottom = -44.0
+text = "You seem to be nearly corrupted, drink this potion and you will survive."
+autowrap_mode = 2
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

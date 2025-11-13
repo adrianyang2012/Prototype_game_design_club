@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://046fi32ydgdq"]
+
+[ext_resource type="Texture2D" uid="uid://bywid7fofwthx" path="res://sugar.png" id="1_pfnow"]
+[ext_resource type="Script" uid="uid://bhqlr8ytqi783" path="res://sugar.gd" id="1_xng1b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xng1b"]
+size = Vector2(69, 60)
+
+[node name="sugar thing" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_xng1b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 2)
+shape = SubResource("RectangleShape2D_xng1b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pfnow")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

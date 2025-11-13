@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcaer41yy8y4k"]
+
+[ext_resource type="AudioStream" uid="uid://6gdfpaafx4ou" path="res://9. Big Threat.ogg" id="1_3h6ak"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_3h6ak")
+volume_db = 0.495
+autoplay = true
+max_distance = 9.22337e+18

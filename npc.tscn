@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr65q80414k5"]
+
+[ext_resource type="Texture2D" uid="uid://vx8i0t6xjmce" path="res://stand.png" id="1_ideak"]
+[ext_resource type="Script" uid="uid://bn1ea1ahu4fwt" path="res://npc.gd" id="1_xxcha"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxcha"]
+size = Vector2(456, 321)
+
+[node name="NPC" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_xxcha")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.9999986, -11.000008)
+scale = Vector2(2.3548384, 2.170886)
+texture = ExtResource("1_ideak")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 12.5)
+shape = SubResource("RectangleShape2D_xxcha")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -1.0
+offset_top = -425.0
+offset_right = 575.0
+offset_bottom = -156.0
+theme_override_font_sizes/font_size = 32
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="Label"]
+wait_time = 4.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Label/Timer" to="." method="_on_timer_timeout"]

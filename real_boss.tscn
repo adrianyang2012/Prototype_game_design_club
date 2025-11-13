@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8wya4wvujlhw"]
+
+[ext_resource type="Texture2D" uid="uid://b10bfxepsuv3i" path="res://icon.svg" id="1_gn66r"]
+[ext_resource type="Script" uid="uid://b3c6s3t3yn2t3" path="res://real_boss.gd" id="1_kird5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kird5"]
+size = Vector2(154, 157)
+
+[node name="Real Boss" type="Node2D"]
+script = ExtResource("1_kird5")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -7.5)
+shape = SubResource("RectangleShape2D_kird5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_gn66r")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

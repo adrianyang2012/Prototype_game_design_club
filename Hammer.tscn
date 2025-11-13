@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkasbjbe11t8n"]
+
+[ext_resource type="Script" uid="uid://gwvvvsrtaisv" path="res://collectible.gd" id="1_aar75"]
+[ext_resource type="Texture2D" uid="uid://c15j8w8fkvjwr" path="res://Mace.png" id="1_l373q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l373q"]
+size = Vector2(326, 303)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_aar75")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -4.5)
+shape = SubResource("RectangleShape2D_l373q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -5)
+texture = ExtResource("1_l373q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="CollisionShape2D" method="_on_area_2d_body_entered"]
